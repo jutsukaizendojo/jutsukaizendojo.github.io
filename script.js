@@ -214,9 +214,9 @@ function getFilteredTechniques() {
 // Get difficulty class name
 function getDifficultyClass(difficulty) {
     switch (difficulty.toLowerCase()) {
-        case 'beginner': return 'difficulty-beginner';
-        case 'intermediate': return 'difficulty-intermediate';
-        case 'advanced': return 'difficulty-advanced';
+        case 'pemula': return 'difficulty-pemula';
+        case 'menengah': return 'difficulty-menengah';
+        case 'lanjutan': return 'difficulty-lanjutan';
         default: return '';
     }
 }
@@ -252,8 +252,24 @@ f.on("value", snapshot => {
     renderTechniques();
 });
 
-function renderTechniques() {
-    const filtered = getFilteredTechniques();
+const techniqueSearch = document.getElementById('techniqueSearch');
+
+techniqueSearch.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase(); // get search text
+    renderTechniques(query); // pass query to render function
+});
+
+
+function renderTechniques(query = "") {
+    let filtered = getFilteredTechniques();
+
+    if (query) {
+        filtered = filtered.filter(t => 
+            t.name.toLowerCase().includes(query) ||
+            t.description.toLowerCase().includes(query)
+        );
+    }
+
     techniquesGrid.innerHTML = '';
 
     if (filtered.length === 0) {
@@ -276,7 +292,7 @@ function renderTechniques() {
                     <h3 class="technique-card-name">${t.name}</h3>
                     <p class="technique-card-description">${t.description}</p>
                     <div class="technique-card-footer">
-                        <span>Learn Technique</span>
+                        <span>Pelajari teknik</span>
                     </div>
                 </div>
             </div>
@@ -284,6 +300,7 @@ function renderTechniques() {
         techniquesGrid.innerHTML += cardHTML;
     });
 }
+
 
 renderTechniques()
 
@@ -311,30 +328,30 @@ function openModal(technique) {
     // Set modal content
     document.getElementById('modalTitle').textContent = technique.name;
     document.getElementById('modalDescription').textContent = technique.description;
-    
+
     // Set badges
     document.getElementById('modalBadges').innerHTML = `
         <span class="modal-badge modal-badge-category">${technique.category}</span>
         <span class="modal-badge modal-badge-difficulty">${technique.difficulty}</span>
     `;
-    
-    // Set steps
+
+    // Steps
     document.getElementById('modalSteps').innerHTML = technique.steps.map((step, index) => `
         <div class="modal-step">
             <div class="modal-step-number">${index + 1}</div>
             <p class="modal-step-text">${step}</p>
         </div>
     `).join('');
-    
-    // Set tips
+
+    // Tips
     document.getElementById('modalTips').innerHTML = technique.tips.map(tip => `
         <div class="modal-tip">
             <div class="modal-tip-bullet"></div>
             <p class="modal-tip-text">${tip}</p>
         </div>
     `).join('');
-    
-    // Set common mistakes
+
+    // Common mistakes
     document.getElementById('modalMistakes').innerHTML = technique.commonMistakes.map(mistake => `
         <div class="modal-mistake">
             <div class="modal-mistake-bullet"></div>
@@ -342,24 +359,31 @@ function openModal(technique) {
         </div>
     `).join('');
 
-    // Show modal first
+    // Videos
+    let videos = technique.video ? [technique.video] : []; // wrap string in array
+
+    if (videos.length > 0) {
+        document.getElementById('modalvideo').innerHTML = videos.map(video => `
+            <div class="modal-video-item">
+                ${video} <!-- iframe or <video> tag -->
+            </div>
+        `).join('');
+    } else {
+        document.getElementById('modalvideo').innerHTML = '<p>No video available.</p>';
+    }
+
+    // Show modal
     modalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
 
-    function getRandomFloat(min, max) {
-        return Math.random() * (max - min) + min;
-    }
-
-    // Extract stats safely
+    // Radar chart
     const labels = technique.stats ? Object.keys(technique.stats) : ["Speed","Strength","Difficulty","Agility"];
-    const values = technique.stats ? Object.values(technique.stats) : [getRandomFloat(0, 100), getRandomFloat(0, 100), getRandomFloat(0, 100), getRandomFloat(0, 100)];
-
-    // Wait until container has layout
+    const values = technique.stats ? Object.values(technique.stats) : [Math.random()*100, Math.random()*100, Math.random()*100, Math.random()*100];
     requestAnimationFrame(() => {
         drawRadarChart(".modal-image-container", labels, values);
     });
-
 }
+
 
 // Close modal
 function closeModal() {

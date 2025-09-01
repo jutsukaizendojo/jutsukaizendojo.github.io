@@ -83,6 +83,21 @@ body {
     color: transparent;
 }
 
+#techniqueSearch {
+    position: fixed;      /* Fix it to the viewport */
+    bottom: 20px;         /* Distance from the bottom */
+    left: 50%;            /* Center horizontally */
+    transform: translateX(-50%);
+    width: 90%;         /* Adjust as needed */
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    z-index: 1000;        /* Make sure it’s on top */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+
 /* Techniques Section */
 .techniques-section {
     padding: 6rem 1.5rem;
@@ -145,12 +160,37 @@ body {
 
 /* Techniques Grid */
 .techniques-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* spacing between cards */
 }
 
-/* Technique Card */
+/* Navbar */
+.navbar {
+    position: fixed; /* sticks to top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #333;
+    margin-left: 20px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #b50000; /* accent color for hover */
+}
+
 .technique-card {
     position: relative;
     overflow: hidden;
@@ -160,6 +200,11 @@ body {
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 8px 32px -8px hsla(0, 0%, 0%, 0.3);
+    
+    width: 100%;        /* takes full width inside container */
+    max-width: 250px;   /* stops it from growing too big */
+    margin: 10px;       /* spacing between cards */
+    box-sizing: border-box;
 }
 
 .technique-card:hover {
@@ -223,17 +268,17 @@ body {
     font-weight: 500;
 }
 
-.difficulty-beginner {
+.difficulty-pemula {
     background-color: hsl(120, 60%, 50%);
     color: white;
 }
 
-.difficulty-intermediate {
+.difficulty-menengah {
     background: linear-gradient(135deg, hsl(43, 74%, 66%), hsl(43, 74%, 50%));
     color: hsl(0, 0%, 10%);
 }
 
-.difficulty-advanced {
+.difficulty-lanjutan {
     background: linear-gradient(135deg, hsl(0, 72%, 51%), hsl(0, 72%, 40%));
     color: white;
 }
