@@ -1,0 +1,534 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: hsl(0, 0%, 100%); /* White */
+    color: hsl(0, 0%, 10%); /* Dark text */
+    line-height: 1.6;
+}
+
+.min-h-screen {
+    min-height: 100vh;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    inset: 0;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: 
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.57), white), /* overlay on top */
+        url("image.jpg"); /* image underneath */
+    background-size: cover;      /* fill & crop */
+    background-position: center; /* center crop */
+    background-repeat: no-repeat;
+}
+
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;           /* make children horizontal */
+    align-items: center;     /* vertical align logo & text */
+    gap: 1rem;               /* space between logo and title */
+}
+
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.025em;
+    line-height: 1;
+}
+
+.hero-logo {
+    width: 150px;            /* adjust as needed */
+    height: auto;
+}
+
+.hero-title-accent {
+    display: block;
+    background: linear-gradient(135deg, hsl(0, 72%, 51%), hsl(0, 72%, 40%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* Techniques Section */
+.techniques-section {
+    padding: 6rem 1.5rem;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.techniques-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.techniques-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.techniques-title-accent {
+    color: hsl(43, 74%, 40%);
+}
+
+.techniques-description {
+    color: hsl(0, 0%, 40%);
+    font-size: 1.125rem;
+    max-width: 512px;
+    margin: 0 auto;
+}
+
+/* Category Filter */
+.category-filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.category-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: hsl(0, 0%, 95%);
+    color: hsl(0, 0%, 25%);
+}
+
+.category-btn:hover {
+    color: hsl(43, 74%, 40%);
+    background-color: hsl(0, 0%, 90%);
+}
+
+.category-btn.active {
+    background: linear-gradient(135deg, hsl(0, 72%, 51%), hsl(0, 72%, 40%));
+    color: white;
+    box-shadow: 0 8px 32px -8px hsla(0, 0%, 0%, 0.3);
+}
+
+/* Techniques Grid */
+.techniques-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+/* Technique Card */
+.technique-card {
+    position: relative;
+    overflow: hidden;
+    background-color: hsl(0, 0%, 100%);
+    border: 1px solid hsl(0, 0%, 90%);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 32px -8px hsla(0, 0%, 0%, 0.3);
+}
+
+.technique-card:hover {
+    border-color: hsl(0, 72%, 51%);
+    box-shadow: 0 16px 64px -16px hsla(0, 0%, 0%, 0.2);
+    transform: scale(1.05);
+}
+
+.technique-card-image-container {
+    aspect-ratio: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.technique-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.technique-card:hover .technique-card-image {
+    transform: scale(1.1);
+}
+
+.technique-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, hsla(0, 0%, 100%, 0.8), transparent, transparent);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.technique-card:hover .technique-card-overlay {
+    opacity: 1;
+}
+
+.technique-card-content {
+    padding: 1.5rem;
+}
+
+.technique-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.technique-card-category {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: hsl(43, 74%, 40%);
+    font-weight: 600;
+}
+
+.technique-card-difficulty {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.difficulty-beginner {
+    background-color: hsl(120, 60%, 50%);
+    color: white;
+}
+
+.difficulty-intermediate {
+    background: linear-gradient(135deg, hsl(43, 74%, 66%), hsl(43, 74%, 50%));
+    color: hsl(0, 0%, 10%);
+}
+
+.difficulty-advanced {
+    background: linear-gradient(135deg, hsl(0, 72%, 51%), hsl(0, 72%, 40%));
+    color: white;
+}
+
+.technique-card-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.technique-card:hover .technique-card-name {
+    color: hsl(0, 72%, 51%);
+}
+
+.technique-card-description {
+    color: hsl(0, 0%, 40%);
+    font-size: 0.875rem;
+    line-height: 1.75;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.technique-card-footer {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    color: hsl(43, 74%, 40%);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.technique-card:hover .technique-card-footer {
+    color: hsl(0, 72%, 51%);
+}
+
+.technique-card-footer span {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.technique-card-arrow {
+    width: 1rem;
+    height: 1rem;
+    margin-left: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.technique-card:hover .technique-card-arrow {
+    transform: translateX(0.25rem);
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: hsla(0, 0%, 100%, 0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: hsl(0, 0%, 100%);
+    border: 1px solid hsl(0, 0%, 85%);
+    border-radius: 0.5rem;
+    max-width: 1024px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid hsl(0, 0%, 85%);
+    position: relative;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.modal-badges {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.modal-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.modal-badge-category {
+    background-color: hsl(43, 74%, 66%);
+    color: hsl(0, 0%, 10%);
+}
+
+.modal-badge-difficulty {
+    border: 1px solid hsl(0, 72%, 51%);
+    color: hsl(0, 72%, 51%);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: hsl(0, 0%, 40%);
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.25rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-close:hover {
+    color: hsl(0, 72%, 51%);
+    background-color: hsl(0, 0%, 90%);
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-image-container {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    border: 1px solid hsl(0, 0%, 85%);
+    margin-bottom: 1.5rem;
+}
+
+.modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-section {
+    margin-bottom: 1.5rem;
+}
+
+.modal-section-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: hsl(43, 74%, 40%);
+    margin-bottom: 0.75rem;
+}
+
+.modal-mistakes-title {
+    color: hsl(0, 72%, 51%);
+}
+
+.modal-description {
+    color: hsl(0, 0%, 25%);
+    line-height: 1.75;
+}
+
+.modal-separator {
+    height: 1px;
+    background-color: hsl(0, 0%, 85%);
+    margin: 1.5rem 0;
+}
+
+.modal-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.modal-step {
+    display: flex;
+    gap: 1rem;
+}
+
+.modal-step-number {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    background: linear-gradient(135deg, hsl(0, 72%, 51%), hsl(0, 72%, 40%));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 0.875rem;
+}
+
+.modal-step-text {
+    padding-top: 0.25rem;
+    line-height: 1.75;
+}
+
+.modal-tips, .modal-mistakes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.modal-tip, .modal-mistake {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.modal-tip-bullet {
+    flex-shrink: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: hsl(43, 74%, 40%);
+    border-radius: 50%;
+    margin-top: 0.5rem;
+}
+
+.modal-mistake-bullet {
+    flex-shrink: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: hsl(0, 72%, 51%);
+    border-radius: 50%;
+    margin-top: 0.5rem;
+}
+
+.modal-tip-text, .modal-mistake-text {
+    line-height: 1.75;
+}
+
+.modal-image-container {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-description {
+        font-size: 1.125rem;
+    }
+    
+    .techniques-title {
+        font-size: 2.5rem;
+    }
+    
+    .techniques-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .category-filter {
+        gap: 0.5rem;
+    }
+    
+    .category-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .techniques-section {
+        padding: 4rem 1rem;
+    }
+    
+    .modal-content {
+        margin: 0.5rem;
+        max-height: 95vh;
+    }
+    
+    .modal-header, .modal-body {
+        padding: 1rem;
+    }
+}

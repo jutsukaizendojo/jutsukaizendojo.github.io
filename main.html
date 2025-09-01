@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<!-- Firebase CDN scripts -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<script>
+  // Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyAWV7AH1BStqGgjsIVHPc4Rr-6PHyzIZt4",
+    authDomain: "technique-selection.firebaseapp.com",
+    databaseURL: "https://technique-selection-default-rtdb.firebaseio.com",
+    projectId: "technique-selection",
+    storageBucket: "technique-selection.firebasestorage.app",
+    messagingSenderId: "997872424088",
+    appId: "1:997872424088:web:07580b9fc8f61718e4eced"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database(); // ✅ Realtime Database instance
+</script>
+
+
+<body>
+    <div class="min-h-screen">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-background">
+                <div class="hero-overlay"></div>
+            </div>
+            
+            <div class="hero-content">
+                <img src="logo.png" alt="Logo" class="hero-logo">
+                <h1 class="hero-title">
+                    Jutsu Kaizen
+                    <span class="hero-title-accent">Dojo</span>
+                </h1>
+            </div>
+        </section>
+
+        <!-- Techniques Section -->
+        <section class="techniques-section">
+            <div class="techniques-header">
+                <h2 class="techniques-title">
+                    Explore <span class="techniques-title-accent">Techniques</span>
+                </h2>
+                <p class="techniques-description">
+                    From beginner fundamentals to advanced submissions, each technique includes detailed breakdowns and expert guidance.
+                </p>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="category-filter" id="categoryFilter">
+                <button class="category-btn active" data-category="All">All</button>
+                <button class="category-btn" data-category="Karate">Karate</button>
+                <button class="category-btn" data-category="Aikido">Aikido</button>
+            </div>
+
+            <!-- Techniques Grid -->
+            <div class="techniques-grid" id="techniquesGrid">
+                <!-- Technique cards will be dynamically inserted here -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content" id="modalContent">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <div class="modal-badges" id="modalBadges"></div>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <img id="modalImage" class="modal-image" alt="">
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Overview</h3>
+                    <p class="modal-description" id="modalDescription"></p>
+                </div>
+                
+                <div class="modal-separator"></div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Step-by-Step Instructions</h3>
+                    <div class="modal-steps" id="modalSteps"></div>
+                </div>
+                
+                <div class="modal-separator"></div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">Pro Tips</h3>
+                    <div class="modal-tips" id="modalTips"></div>
+                </div>
+                
+                <div class="modal-separator"></div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title modal-mistakes-title">Common Mistakes to Avoid</h3>
+                    <div class="modal-mistakes" id="modalMistakes"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

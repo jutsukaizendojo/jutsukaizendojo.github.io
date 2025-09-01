@@ -1,0 +1,19 @@
+    const cardHTML = `
+      <div class="technique-card" data-technique-id="${id}">
+        <div class="technique-card-image-container">
+          <img src="${data.image || 'images/default.jpg'}" alt="${data.name}" class="technique-card-image">
+          <div class="technique-card-overlay"></div> <!-- radar chart goes here -->
+        </div>
+        <div class="technique-card-content">
+          <div class="technique-card-header">
+            <span class="technique-card-category">${data.category}</span>
+            <span class="technique-card-difficulty ${getDifficultyClass(data.difficulty)}">${data.difficulty}</span>
+          </div>
+          <h3 class="technique-card-name">${data.name}</h3>
+          <p class="technique-card-description">${data.description}</p>
+          <div class="technique-card-footer">
+            <span>Learn Technique</span>
+          </div>
+        </div>
+      </div>
+    `;
