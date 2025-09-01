@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>    
     <link rel="stylesheet" href="styles.css">
+    <div class="navbar">
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </div>
+</div>
+
 </head>
 <!-- Firebase CDN scripts -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -49,10 +56,10 @@
         <section class="techniques-section">
             <div class="techniques-header">
                 <h2 class="techniques-title">
-                    Explore <span class="techniques-title-accent">Techniques</span>
+                    Jelajahi <span class="techniques-title-accent">Teknik</span>
                 </h2>
                 <p class="techniques-description">
-                    From beginner fundamentals to advanced submissions, each technique includes detailed breakdowns and expert guidance.
+                    Dari dasar-dasar untuk pemula hingga teknik untuk tingkat lanjut
                 </p>
             </div>
 
@@ -64,6 +71,7 @@
             </div>
 
             <!-- Techniques Grid -->
+            <input type="text" id="techniqueSearch" placeholder="Cari teknik..." />
             <div class="techniques-grid" id="techniquesGrid">
                 <!-- Technique cards will be dynamically inserted here -->
             </div>
@@ -85,29 +93,36 @@
                 </div>
                 
                 <div class="modal-section">
-                    <h3 class="modal-section-title">Overview</h3>
+                    <h3 class="modal-section-title">Ringkasan</h3>
                     <p class="modal-description" id="modalDescription"></p>
                 </div>
                 
                 <div class="modal-separator"></div>
                 
                 <div class="modal-section">
-                    <h3 class="modal-section-title">Step-by-Step Instructions</h3>
+                    <h3 class="modal-section-title">Petunjuk Langkah-demi-Langkah</h3>
                     <div class="modal-steps" id="modalSteps"></div>
                 </div>
                 
                 <div class="modal-separator"></div>
                 
                 <div class="modal-section">
-                    <h3 class="modal-section-title">Pro Tips</h3>
+                    <h3 class="modal-section-title">Tips Profesional</h3>
                     <div class="modal-tips" id="modalTips"></div>
                 </div>
                 
                 <div class="modal-separator"></div>
                 
                 <div class="modal-section">
-                    <h3 class="modal-section-title modal-mistakes-title">Common Mistakes to Avoid</h3>
+                    <h3 class="modal-section-title modal-mistakes-title">Kesalahan untuk dihindari</h3>
                     <div class="modal-mistakes" id="modalMistakes"></div>
+                </div>
+
+                <div class="modal-seperator"></div>
+
+                <div class="modal-section">
+                    <div class="modal-video" id="modalvideo">
+                    </div>
                 </div>
             </div>
         </div>
