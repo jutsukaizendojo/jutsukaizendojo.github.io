@@ -84,19 +84,26 @@ body {
 }
 
 #techniqueSearch {
-    position: fixed;      /* Fix it to the viewport */
-    bottom: 20px;         /* Distance from the bottom */
-    left: 50%;            /* Center horizontally */
-    transform: translateX(-50%);
-    width: 90%;         /* Adjust as needed */
-    padding: 10px 15px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 20px;
-    z-index: 1000;        /* Make sure it’s on top */
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  position: fixed;
+  bottom: 20px; /* stick to bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 400px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  opacity: 0;
+  pointer-events: none; /* prevents clicks when hidden */
+  transition: opacity 0.4s ease;
+  z-index: 1000;
 }
 
+#techniqueSearch.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
 
 /* Techniques Section */
 .techniques-section {
