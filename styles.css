@@ -88,8 +88,7 @@ body {
   bottom: 20px; /* stick to bottom */
   left: 50%;
   transform: translateX(-50%);
-  width: 80%;
-  max-width: 400px;
+  width: 90%;
   padding: 10px;
   border-radius: 20px;
   border: 1px solid #ccc;
@@ -584,4 +583,5 @@ body {
         padding: 1rem;
     }
 }
+
 
