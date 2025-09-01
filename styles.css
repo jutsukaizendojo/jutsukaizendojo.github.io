@@ -101,7 +101,7 @@ body {
 }
 
 #techniqueSearch.visible {
-  opacity: 0.8;
+  opacity: 1;
   pointer-events: auto;
 }
 
@@ -587,6 +587,7 @@ body {
         padding: 1rem;
     }
 }
+
 
 
 
