@@ -167,10 +167,14 @@ body {
 
 /* Techniques Grid */
 .techniques-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px; /* spacing between cards */
+    display: grid;
+    gap: 20px; /* space between cards */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
+
 
 /* Navbar */
 .navbar {
@@ -584,3 +588,4 @@ body {
         padding: 1rem;
     }
 }
+
