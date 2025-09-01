@@ -320,6 +320,15 @@ categoryFilter.addEventListener('click', (e) => {
     renderTechniques();
 });
 
+window.addEventListener("scroll", () => {
+  const searchBar = document.getElementById("techniqueSearch");
+  if (window.scrollY > 200) { // show after 200px scroll
+    searchBar.classList.add("visible");
+  } else {
+    searchBar.classList.remove("visible");
+  }
+});
+
 
 // Open modal with technique details
 function openModal(technique) {
